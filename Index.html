@@ -1,0 +1,2724 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,viewport-fit=cover">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="theme-color" content="#ffffff">
+<title>JAWRA MUSIC</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    font-family:Arial,sans-serif;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#fff;
+    color:#111;
+    padding-bottom:78px;
+}
+
+button,input{
+    font-family:inherit;
+}
+
+button{
+    cursor:pointer;
+}
+
+/* ================= SPLASH ================= */
+
+#splashScreen{
+    position:fixed;
+    inset:0;
+    background:#080808;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    z-index:99999;
+    transition:.6s;
+}
+
+.splash-content{
+    text-align:center;
+    animation:zoomIn .8s ease;
+}
+
+.splash-logo{
+    width:200px;
+    height:200px;
+    border-radius:50%;
+    object-fit:cover;
+    margin-bottom:25px;
+    box-shadow:
+        0 0 35px rgba(160,32,240,.6),
+        0 0 80px rgba(160,32,240,.2);
+    animation:pulse 2s infinite;
+}
+
+.splash-loader{
+    width:38px;
+    height:38px;
+    margin:auto;
+    border:3px solid rgba(160,32,240,.2);
+    border-top-color:#b026ff;
+    border-radius:50%;
+    animation:spin 1s linear infinite;
+}
+
+@keyframes zoomIn{
+    from{transform:scale(.7);opacity:0}
+    to{transform:scale(1);opacity:1}
+}
+
+@keyframes pulse{
+    0%,100%{transform:scale(1)}
+    50%{transform:scale(1.04)}
+}
+
+@keyframes spin{
+    to{transform:rotate(360deg)}
+}
+
+/* ================= HEADER ================= */
+
+.header{
+    height:68px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 17px;
+    background:rgba(255,255,255,.97);
+    backdrop-filter:blur(15px);
+    border-bottom:1px solid #eee;
+    position:sticky;
+    top:0;
+    z-index:500;
+}
+
+.logo{
+    font-size:22px;
+    font-weight:900;
+    font-style:italic;
+}
+
+.header-icons{
+    display:flex;
+    gap:17px;
+    align-items:center;
+}
+
+.header-search,
+.menu-button{
+    border:0;
+    background:none;
+    font-size:28px;
+}
+
+/* ================= SEARCH ================= */
+
+.search-area{
+    padding:12px 14px 7px;
+    background:#fff;
+}
+
+.search{
+    height:53px;
+    border:1px solid #ddd;
+    border-radius:28px;
+    display:flex;
+    overflow:hidden;
+    background:#fafafa;
+    box-shadow:0 4px 18px rgba(0,0,0,.06);
+}
+
+.search input{
+    flex:1;
+    border:0;
+    outline:0;
+    background:transparent;
+    padding:0 18px;
+    font-size:16px;
+}
+
+.search button{
+    width:60px;
+    border:0;
+    border-left:1px solid #ddd;
+    background:#f1f1f1;
+    font-size:21px;
+}
+
+/* ================= CATEGORIES ================= */
+
+.categories{
+    display:flex;
+    gap:10px;
+    overflow-x:auto;
+    padding:9px 14px 15px;
+    scrollbar-width:none;
+    background:#fff;
+}
+
+.categories::-webkit-scrollbar{
+    display:none;
+}
+
+.category{
+    flex:none;
+    padding:12px 19px;
+    border-radius:14px;
+    background:#f0f0f0;
+    font-weight:bold;
+    font-size:15px;
+    white-space:nowrap;
+}
+
+.category.active{
+    background:#111;
+    color:#fff;
+}
+
+
+.search-icon-btn,.voice-icon-btn{flex:none;border:0;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.search-icon-btn{width:44px;height:44px;border-radius:50%;background:#171717;color:#f4d47b;font-size:28px}
+.voice-icon-btn{width:44px;height:44px;border-radius:50%;background:linear-gradient(145deg,#252525,#080808);border:1px solid #3b3320;color:#fff;font-size:21px;box-shadow:0 0 12px rgba(212,175,85,.16)}
+.search-history-panel{position:fixed;z-index:5001;inset:145px 0 0;background:#101010;color:#fff;border:0;border-radius:0;overflow-y:auto;box-shadow:0 12px 24px #0005;padding:0 0 20px}.search-voice-row{position:sticky;top:0;z-index:2;display:flex;align-items:center;gap:14px;padding:16px 18px;background:#191919;border-bottom:1px solid #3a321f;color:#f4d47b;font-weight:800}.search-voice-row button{margin-left:auto;width:48px;height:48px;border:1px solid #d4af55;border-radius:50%;background:linear-gradient(145deg,#3b3018,#111);color:#ffe6a0;font-size:25px;box-shadow:0 0 16px #d4af5533}.search-history-panel .history-row{min-height:82px;padding:13px 18px}.search-history-panel .history-query{font-size:18px}.search-history-panel .history-clock{font-size:30px}.search-history-panel .history-use{font-size:30px}.search-area.search-open{position:sticky;top:0;z-index:5002;background:#090909}.search-area.search-open .search{background:#242424;border:0}.search-area.search-open .search input{color:#fff;font-family:Georgia,serif;font-style:italic;font-size:19px}.search-area.search-open .search-icon-btn{background:#242424;color:#fff}.search-area.search-open .voice-icon-btn{width:50px;height:50px;font-size:25px;border-radius:50%;background:#242424;border:0}
+.history-row{display:flex;align-items:center;gap:13px;padding:12px 14px;border-bottom:1px solid #242424;cursor:pointer}
+.history-clock{font-size:22px;color:#c8c8c8}.history-query{flex:1;font-size:15px}.history-use{font-size:23px;color:#aaa}
+.history-empty{padding:14px;color:#aaa;font-size:13px}
+#offlineBanner{display:none;position:fixed;inset:68px 0 72px;z-index:3600;align-items:center;justify-content:center;padding:18px;background:rgba(0,0,0,.72);backdrop-filter:blur(6px)}
+#offlineBanner.show{display:flex}.offline-card{width:min(420px,100%);padding:28px 20px;text-align:center;color:#fff;border-radius:24px;border:1px solid #d8b45a;background:radial-gradient(circle at top,#3b2e13,#111 55%,#050505);box-shadow:0 0 32px #d8b45a22}
+.offline-symbol{font-size:52px;margin-bottom:10px}.offline-title{font-size:23px;font-weight:900;color:#f2d37b;margin-bottom:10px}.offline-message{font-size:14px;line-height:1.65;color:#ded8ca}.offline-retry{margin-top:18px;padding:11px 24px;border-radius:30px;border:1px solid #e5c36b;background:linear-gradient(90deg,#9b701b,#f5dc8e,#9b701b);font-weight:800;color:#171006}
+.player-extra-actions{display:flex;gap:7px;padding:10px 8px;background:#080808;border-bottom:1px solid #282828;flex-wrap:nowrap}
+.player-extra-actions button{flex:1;min-width:0;padding:11px 2px;border:1px solid #4a3a18;border-radius:12px;background:linear-gradient(145deg,#242018,#111);color:#f5d784;font-weight:800;font-size:11px}
+
+/* ================= RESULTS ================= */
+
+#results{
+    background:#fff;
+}
+
+.video{
+    margin:12px 0 22px;
+    padding-bottom:12px;
+    background:linear-gradient(145deg,#fff,#faf7ef);
+    border:1px solid rgba(190,151,54,.24);
+    border-radius:0 0 18px 18px; overflow:hidden; cursor:pointer;
+    box-shadow:0 5px 18px rgba(20,15,4,.10);
+}
+.video .thumbnail-wrap{border-bottom:3px solid #d4af55;box-shadow:0 5px 16px #0002}
+.video .thumbnail{transition:transform .35s ease,filter .35s ease}
+.video:active .thumbnail{transform:scale(1.025);filter:saturate(1.12)}
+.video .video-info{padding:0 13px 0}
+.video .channel-logo{border:1px solid #d7b75d;box-shadow:0 0 0 2px #fff}
+
+.thumbnail-wrap{
+    width:100%;
+    aspect-ratio:16/9;
+    background:#111;
+    position:relative;
+    overflow:hidden;
+}
+
+.thumbnail{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+}
+
+.video-info{
+    display:flex;
+    gap:0;
+    padding:12px 14px 0;
+}
+
+.channel-logo{
+    width:41px;
+    height:41px;
+    min-width:41px;
+    border-radius:50%;
+    background:#eee;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:19px;
+}
+
+.details{
+    flex:1;
+    min-width:0;
+}
+
+.title-row{
+    display:flex;
+    gap:7px;
+}
+
+.title{
+    flex:1;
+    font-size:16px;
+    line-height:1.4;
+    font-weight:bold;
+    display:-webkit-box;
+    -webkit-line-clamp:2;
+    -webkit-box-orient:vertical;
+    overflow:hidden;
+}
+
+.more{
+    font-size:22px;
+    color:#555;
+}
+
+/* ================= PLAYER ================= */
+
+#playerOverlay{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:#080808;
+    color:#fff;
+    z-index:5000;
+    overflow-y:auto;
+}
+
+#playerOverlay.show{
+    display:block;
+}
+
+/*
+   মূল গুরুত্বপূর্ণ অংশ:
+   ভিডিওটি scroll করলেও উপরে আটকে থাকবে।
+*/
+.player-video{
+    position:sticky;
+    top:0;
+    width:100%;
+    aspect-ratio:16/9;
+    background:#000;
+    z-index:100;
+    box-shadow:0 4px 20px rgba(0,0,0,.45);
+}
+
+#ytFrame{
+    width:100%;
+    height:100%;
+    border:0;
+    display:block;
+}
+
+.player-top{
+    position:absolute;
+    left:0;
+    right:0;
+    top:0;
+    height:65px;
+    padding:10px 12px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    z-index:10;
+    background:linear-gradient(
+        to bottom,
+        rgba(0,0,0,.75),
+        transparent
+    );
+}
+
+.player-btn{
+    width:44px;
+    height:44px;
+    border-radius:50%;
+    border:1px solid rgba(255,255,255,.2);
+    background:rgba(0,0,0,.55);
+    color:#fff;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:28px;
+    backdrop-filter:blur(10px);
+}
+
+.player-btn:active{
+    transform:scale(.88);
+}
+
+/* ================= PLAYER STATS ================= */
+
+.player-actions{
+    background:#080808;
+    padding:12px 14px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    border-bottom:1px solid #252525;
+}
+
+.stats{
+    display:flex;
+    gap:18px;
+}
+
+.stat{
+    color:#ddd;
+    font-size:13px;
+    white-space:nowrap;
+}
+
+.player-more{
+    position:relative;
+}
+
+.player-more-btn{
+    width:42px;
+    height:42px;
+    border:0;
+    border-radius:50%;
+    background:#202020;
+    color:#fff;
+    font-size:23px;
+}
+
+.action-menu{
+    display:none;
+    position:absolute;
+    right:0;
+    top:48px;
+    width:180px;
+    background:#fff;
+    color:#111;
+    border-radius:14px;
+    padding:7px;
+    box-shadow:0 12px 35px rgba(0,0,0,.4);
+    z-index:200;
+}
+
+.action-menu.show{
+    display:block;
+}
+
+.action-menu button{
+    width:100%;
+    border:0;
+    background:none;
+    padding:13px;
+    text-align:left;
+    border-radius:10px;
+    font-size:14px;
+    font-weight:bold;
+}
+
+.action-menu button:active{
+    background:#eee;
+}
+
+/* ================= RELATED ================= */
+
+.related-title{
+    background:#080808;
+    color:#fff;
+    padding:18px 15px 12px;
+    font-size:20px;
+    font-weight:bold;
+}
+
+#relatedResults{
+    background:#080808;
+    padding-bottom:35px;
+}
+
+.related-video{
+    background:#080808;
+    color:#fff;
+    margin-bottom:22px;
+    cursor:pointer;
+}
+
+.related-video .video-info{
+    padding-top:0;
+    gap:0;
+}
+
+.related-video .title{
+    color:#fff;
+}
+
+.related-video .channel-logo{
+    background:#252525;
+}
+
+/* ================= MINI VIDEO PLAYER ================= */
+
+#miniPlayer{
+    display:none; position:fixed; right:10px; left:auto; bottom:84px; top:auto;
+    width:min(205px,56vw); background:#101010; color:#fff;
+    border:1px solid rgba(221,180,76,.85); border-radius:14px; z-index:9000;
+    box-shadow:0 8px 30px rgba(0,0,0,.48),0 0 14px rgba(218,174,66,.18);
+    overflow:hidden;
+}
+#miniPlayer.show{display:block}
+.mini-top{min-height:31px;display:flex;align-items:center;gap:6px;padding:5px 7px;background:linear-gradient(100deg,#181818,#29200e);cursor:move;touch-action:none;user-select:none;-webkit-user-select:none}
+.mini-title{flex:1;min-width:0;font-size:11px;font-weight:bold;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mini-close{flex:none;width:25px;height:24px;border:0;border-radius:7px;background:#3a2b10;color:#fff;font-size:16px}
+.mini-video-wrap{width:100%;aspect-ratio:16/9;background:#000}
+/* Player rotate fallback for WebViews that do not expose Screen Orientation API */
+#playerOverlay.rotate-landscape{position:fixed!important;inset:0!important;width:100vw!important;height:100dvh!important;z-index:12000!important;background:#000;overflow-y:auto!important}
+#playerOverlay.rotate-landscape .player-video{position:sticky;top:0;width:100vw;height:56.25vw;max-height:100dvh;z-index:2}
+#playerOverlay.rotate-landscape .player-video iframe{width:100%;height:100%}
+#playerOverlay.rotate-landscape .player-extra-actions{padding:8px}
+#playerOverlay.rotate-landscape .related-title{padding:12px}
+.player-demon-toggle{position:fixed!important;right:18px;top:110px;left:auto;bottom:auto;z-index:20000;width:56px;height:56px;border:1px solid #6a5422;border-radius:50%;background:rgba(10,10,10,.92);color:#f2d17a;font-size:28px;box-shadow:0 4px 18px #0009;touch-action:none;cursor:grab;user-select:none;-webkit-user-select:none}
+.player-video{position:sticky;top:0;z-index:100}
+#miniVideoFrame{width:100%;height:100%;display:block;border:0;background:#000}
+
+/* ================= PREMIUM QUOTA BANNER ================= */
+#quotaBanner{
+    display:none;position:fixed;inset:68px 0 72px;z-index:3500;
+    align-items:center;justify-content:center;padding:18px;
+    background:rgba(5,5,5,.56);backdrop-filter:blur(5px)
+}
+#quotaBanner.show{display:flex}
+.quota-card{
+    position:relative;width:min(420px,100%);overflow:hidden;padding:25px 20px 20px;
+    text-align:center;color:#fff8e8;border:1px solid #d8b45a;border-radius:23px;
+    background:radial-gradient(circle at 50% -10%,#55421b 0,#17130b 48%,#080808 100%);
+    box-shadow:0 18px 55px rgba(0,0,0,.5),0 0 28px rgba(220,178,72,.22)
+}
+.quota-card:before{content:"";position:absolute;inset:6px;border:1px solid rgba(226,190,98,.28);border-radius:17px;pointer-events:none}
+.quota-kicker{color:#e6c875;font-size:10px;font-weight:800;letter-spacing:2px}
+.quota-title{margin:13px 0 8px;font-size:22px;font-weight:900}
+.quota-message{color:#d4cbb7;font-size:13px;line-height:1.6}
+.quota-countdown{margin:17px 0 7px;color:#f3d47d;font-size:26px;font-weight:900;letter-spacing:.5px;font-variant-numeric:tabular-nums}
+.quota-sub{color:#bdb19a;font-size:11px;line-height:1.5}
+.quota-close{margin-top:18px;padding:10px 22px;border:1px solid #e0bd63;border-radius:999px;background:linear-gradient(100deg,#a77a23,#f0d68a,#a77a23);color:#171006;font-weight:900}
+
+/* ================= BOTTOM NAV ================= */
+
+.bottom-nav{
+    position:fixed;
+    left:0;
+    right:0;
+    bottom:0;
+    height:72px;
+    background:rgba(255,255,255,.97);
+    backdrop-filter:blur(15px);
+    border-top:1px solid #ddd;
+    z-index:4000;
+    display:flex;
+    align-items:center;
+    justify-content:space-evenly;
+}
+
+.nav-item{
+    border:0;
+    background:none;
+    color:#111;
+    flex:1;
+    min-width:0;
+    text-align:center;
+    font-size:12px;
+    font-weight:bold;
+}
+
+.nav-icon{
+    display:block;
+    font-size:24px;
+    margin-bottom:3px;
+}
+
+.plus-button{
+    width:54px;
+    height:48px;
+    border-radius:18px;
+    border:1px solid #ddd;
+    background:#f4f4f4;
+    font-size:31px;
+}
+
+/* ================= MENU ================= */
+
+.bg-menu{
+    position:fixed;
+    top:60px;
+    right:10px;
+    width:190px;
+    background:#fff;
+    border:1px solid #eee;
+    border-radius:16px;
+    padding:10px;
+    box-shadow:0 15px 45px rgba(0,0,0,.18);
+    z-index:6000;
+    display:none;
+}
+
+.bg-menu.show{
+    display:block;
+}
+
+.bg-title{
+    padding:7px 9px;
+    color:#777;
+    font-size:12px;
+    font-weight:bold;
+}
+
+.bg-option{
+    width:100%;
+    border:0;
+    padding:11px;
+    margin:3px 0;
+    border-radius:10px;
+    text-align:left;
+    background:#f3f3f3;
+    font-weight:bold;
+}
+
+/* ================= LOADING ================= */
+
+.loading{
+    text-align:center;
+    padding:40px 15px;
+    color:#777;
+}
+
+.loading-spinner{
+    width:35px;
+    height:35px;
+    margin:0 auto 13px;
+    border:3px solid #ddd;
+    border-top-color:#111;
+    border-radius:50%;
+    animation:spin 1s linear infinite;
+}
+
+.related-loading{
+    text-align:center;
+    padding:30px;
+    color:#999;
+}
+
+.related-spinner{
+    width:30px;
+    height:30px;
+    border:3px solid #333;
+    border-top-color:#fff;
+    border-radius:50%;
+    margin:auto auto 10px;
+    animation:spin 1s linear infinite;
+}
+
+/* ================= DESKTOP ================= */
+
+@media(min-width:800px){
+
+    .video,
+    .related-video{
+        max-width:900px;
+        margin-left:auto;
+        margin-right:auto;
+    }
+
+    .thumbnail-wrap{
+        border-radius:12px;
+    }
+
+    .player-video{
+        max-width:1100px;
+        margin:auto;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================= SPLASH ================= -->
+
+<div id="splashScreen">
+    <div class="splash-content">
+
+        <img
+            src="https://i.ibb.co.com/r2cGS8H4/1000012185.jpg"
+            class="splash-logo"
+            alt="JAWRA MUSIC">
+
+        <div class="splash-loader"></div>
+
+    </div>
+</div>
+
+
+<!-- ================= HEADER ================= -->
+
+<header class="header">
+
+    <div class="logo">
+        😈 JAWRA MUSIC
+    </div>
+
+    <div class="header-icons">
+
+        <button
+            class="header-search"
+            onclick="focusSearch()">
+            ⌕
+        </button>
+
+        <button
+            class="menu-button"
+            onclick="toggleBgMenu()">
+            ⋮
+        </button>
+
+    </div>
+
+</header>
+
+
+<!-- ================= BACKGROUND MENU ================= -->
+
+<div class="bg-menu" id="bgMenu">
+
+    <div class="bg-title">
+        BACKGROUND
+    </div>
+
+    <button class="bg-option"
+        onclick="changeBackground('#fff')">
+        ⚪ White
+    </button>
+
+    <button class="bg-option"
+        onclick="changeBackground('#f5f5f5')">
+        ◻️ Soft White
+    </button>
+
+    <button class="bg-option"
+        onclick="changeBackground('#111')">
+        ⚫ Black
+    </button>
+
+    <button class="bg-option"
+        onclick="changeBackground('#b30000')">
+        🔴 Red
+    </button>
+
+</div>
+
+
+<!-- ================= SEARCH ================= -->
+
+<div class="search-area">
+
+    <div class="search">
+
+        <input
+            id="searchInput"
+            type="text"
+            placeholder="Search YouTube"
+            autocomplete="off"
+            onfocus="showSearchHistory()"
+            oninput="showSearchHistory()"
+            onkeydown="searchEnter(event)">
+
+        <button class="search-icon-btn" onclick="searchMusic()" aria-label="সার্চ">⌕</button>
+        <button class="voice-icon-btn" onclick="startVoiceSearch()" aria-label="ভয়েস সার্চ">🎙</button>
+
+    </div>
+    <div id="searchHistoryPanel" class="search-history-panel" style="display:none"></div>
+
+</div>
+
+
+<!-- ================= CATEGORIES ================= -->
+
+<div class="categories">
+
+    <div class="category active"
+        onclick="categorySearch('')">
+        All
+    </div>
+
+    <div class="category"
+        onclick="categorySearch('Music')">
+        Music
+    </div>
+
+    <div class="category"
+        onclick="categorySearch('Motu Patlu')">
+        Motu Patlu
+    </div>
+
+    <div class="category"
+        onclick="categorySearch('Dubbing')">
+        Dubbing
+    </div>
+
+    <div class="category"
+        onclick="categorySearch('Bangla Song')">
+        Bangla
+    </div>
+
+    <div class="category"
+        onclick="categorySearch('DJ Music')">
+        DJ
+    </div>
+
+    <div class="category"
+        onclick="categorySearch('Lo-fi')">
+        Lo-fi
+    </div>
+
+    <div class="category"
+        onclick="categorySearch('Bhojpuri Song')">
+        Bhojpuri
+    </div>
+
+    <div class="category"
+        onclick="categorySearch('Relax Music')">
+        Relax
+    </div>
+
+</div>
+
+
+<!-- ================= RESULTS ================= -->
+
+<div id="results">
+
+    <div class="loading">
+        <div class="loading-spinner"></div>
+        ভিডিও লোড হচ্ছে...
+    </div>
+
+</div>
+
+
+<!-- ================= PLAYER ================= -->
+
+<div id="playerOverlay">
+
+    <!-- এই অংশটি sticky -->
+    <div class="player-video">
+
+        <!-- Clean video area: app back and floating demon buttons removed.
+             YouTube's own player branding/links may still appear inside the iframe. -->
+
+        <button class="player-demon-toggle" id="playerDemonToggle" aria-label="মিনি প্লেয়ার চালু বা বন্ধ">😈</button>
+        <iframe
+            id="ytFrame"
+            src=""
+            allow="
+                autoplay;
+                encrypted-media;
+                picture-in-picture;
+                fullscreen
+            "
+            allowfullscreen
+            referrerpolicy="strict-origin-when-cross-origin">
+        </iframe>
+
+    </div>
+
+
+    <!-- শুধু stats + three dot -->
+    <div class="player-actions">
+
+        <div class="stats">
+
+            <span class="stat"
+                id="viewCount">
+                👁 0
+            </span>
+
+            <span class="stat"
+                id="likeCount">
+                👍 0
+            </span>
+
+            <span class="stat"
+                id="commentCount">
+                💬 0
+            </span>
+
+        </div>
+
+
+        <div class="player-more">
+
+            <button
+                class="player-more-btn"
+                onclick="toggleActionMenu(event)">
+                ⋮
+            </button>
+
+            <div
+                class="action-menu"
+                id="actionMenu">
+
+                <button onclick="saveCurrentVideo()">
+                    🔖 Save
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+    <div class="player-extra-actions">
+        <button onclick="saveCurrentVideo()">🔖 Save</button>
+        <button onclick="popupCurrentVideo()">↗ Popup</button>
+        <button onclick="downloadCurrentVideo()">⬇ Download</button>
+        <button onclick="rotatePlayer()">⛶ Rotate</button>
+    </div>
+
+
+    <!-- Related -->
+    <div class="related-title">
+        আরও ভিডিও
+    </div>
+
+    <div id="relatedResults">
+
+        <div class="related-loading">
+
+            <div class="related-spinner"></div>
+
+            একই ধরনের ভিডিও খোঁজা হচ্ছে...
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ================= MINI PLAYER ================= -->
+
+<div id="miniPlayer" aria-label="Mini video player">
+    <div class="mini-top">
+        <div id="miniTitle" class="mini-title">JAWRA MUSIC</div>
+        <button class="mini-close" onclick="closeBackground()" aria-label="মিনি প্লেয়ার বন্ধ">✕</button>
+    </div>
+    <div class="mini-video-wrap">
+        <div id="miniFrameHost" style="width:100%;height:100%"></div>
+    </div>
+</div>
+
+<div id="offlineBanner" role="status" aria-live="polite">
+  <div class="offline-card">
+    <div class="offline-symbol">📡</div>
+    <div class="offline-title">NO INTERNET</div>
+    <div class="offline-message">JAWRA MUSIC কিরে মাংগের নাতী ইন্টারনেট ছাড়া আসছোছ বিডিও দেখতে,সালা ফকিন্নি, বের হ, ইন্টারনেট সংজোক করে, তার পর আসিস আমায় দেখতে</div>
+    <button class="offline-retry" onclick="retryNetwork()">try again</button>
+  </div>
+</div>
+
+<div id="quotaBanner" role="status" aria-live="polite">
+    <div class="quota-card">
+        <div class="quota-kicker">😈 JAWRA MUSIC · PREMIUM</div>
+        <div class="quota-title">আজকের YouTube API কোটা শেষ</div>
+        <div class="quota-message">ভিডিও সার্চ সাময়িকভাবে বন্ধ আছে। কোটা রিসেট হলে আবার চেষ্টা করতে পারবে।</div>
+        <div id="quotaCountdown" class="quota-countdown">হিসাব হচ্ছে...</div>
+        <div class="quota-sub">Pacific Time অনুযায়ী পরবর্তী দৈনিক রিসেট পর্যন্ত<br>সময় বাকি</div>
+        <button class="quota-close" onclick="hideQuotaBanner()">ঠিক আছে</button>
+    </div>
+</div>
+
+<!-- ================= BOTTOM NAV ================= -->
+
+<nav class="bottom-nav" aria-label="প্রধান মেনু">
+    <button class="nav-item" onclick="goHome()"><span class="nav-icon">⌂</span>Home</button>
+    <button class="nav-item" onclick="categorySearch('Shorts')"><span class="nav-icon">▶</span>Shorts</button>
+    <button class="nav-item" onclick="viewSavedVideos()"><span class="nav-icon">⬇</span>Saved</button>
+</nav>
+
+
+<script>
+
+/* =================================================
+   API KEY
+   ================================================= */
+
+const API_KEY =
+    "AIzaSyB0v6AdruCXxW4ZS_xKCrB8cnc6TItXwCs";
+
+
+/* =================================================
+   STATE
+   ================================================= */
+
+let currentVideoId="";
+let currentTitle="";
+let currentChannel="";
+let currentThumb="";
+
+let currentMode="home";
+
+let nextPageToken="";
+let relatedPageToken="";
+
+let loadingMore=false;
+let loadingRelated=false;
+
+let playerHistory=false;
+
+
+/* =================================================
+   SPLASH
+   ================================================= */
+
+window.addEventListener("load",()=>{
+
+    setTimeout(()=>{
+
+        const splash =
+            document.getElementById(
+                "splashScreen"
+            );
+
+        splash.style.opacity="0";
+        splash.style.visibility="hidden";
+
+    },2500);
+
+});
+
+
+/* =================================================
+   OFFLINE BANNER + SEARCH HISTORY + VOICE SEARCH
+   ================================================= */
+function updateNetworkBanner(){
+  const banner=document.getElementById("offlineBanner");
+  if(!banner) return;
+  banner.classList.toggle("show",!navigator.onLine);
+}
+window.addEventListener("offline",updateNetworkBanner);
+window.addEventListener("load",updateNetworkBanner);
+window.addEventListener("online",()=>{updateNetworkBanner();});
+function retryNetwork(){
+  if(!navigator.onLine){alert("এখনও ইন্টারনেট সংযোগ পাওয়া যাচ্ছে না। Wi-Fi বা মোবাইল ডাটা চালু করো।");return;}
+  document.getElementById("offlineBanner")?.classList.remove("show");
+  if(document.getElementById("searchInput").value.trim()) searchMusic(); else loadHomeVideos();
+}
+function getSearchHistory(){try{return JSON.parse(localStorage.getItem("jawraSearchHistory")||"[]")}catch(e){return []}}
+function addSearchHistory(q){
+  q=String(q||"").trim(); if(!q)return;
+  let list=getSearchHistory().filter(x=>x.toLowerCase()!==q.toLowerCase());
+  list.unshift(q); list=list.slice(0,30);
+  localStorage.setItem("jawraSearchHistory",JSON.stringify(list));
+}
+function showSearchHistory(){
+  const panel=document.getElementById("searchHistoryPanel"); const input=document.getElementById("searchInput"); document.querySelector(".search-area")?.classList.add("search-open");
+  if(!panel||!input||document.activeElement!==input)return;
+  const q=input.value.trim().toLowerCase(); const items=getSearchHistory().filter(x=>!q||x.toLowerCase().includes(q)).slice(0,10);
+  panel.innerHTML=`<div class="search-voice-row"><span>🎙️ ভয়েস দিয়ে সার্চ করো</span><button type="button" onclick="event.stopPropagation();startVoiceSearch()" aria-label="ভয়েস সার্চ চালু করো">🎙</button></div>`+(items.length?items.map(x=>`<div class="history-row" onclick="useSearchHistory(${JSON.stringify(x).replace(/</g,'\u003c')})"><span class="history-clock">◷</span><span class="history-query">${escapeHtml(x)}</span><span class="history-use">↖</span></div>`).join(""):'<div class="history-empty">সার্চ করলে এখানে হিস্টোরি দেখা যাবে</div>');
+  panel.style.display="block";
+}
+function useSearchHistory(q){document.getElementById("searchInput").value=q;document.getElementById("searchHistoryPanel").style.display="none";document.querySelector(".search-area")?.classList.remove("search-open");searchMusic()}
+function startVoiceSearch(){
+  const SpeechRecognition=window.SpeechRecognition||window.webkitSpeechRecognition;
+  if(!SpeechRecognition){alert("এই WebView-তে ভয়েস সার্চ সমর্থিত নয়। Chrome-এ খুলে চেষ্টা করো, অথবা কিবোর্ডের মাইক্রোফোন ব্যবহার করো।");return;}
+  const rec=new SpeechRecognition(); rec.lang="bn-BD"; rec.interimResults=false; rec.maxAlternatives=1;
+  const btn=document.querySelector(".voice-icon-btn"); if(btn){btn.textContent="🔴";btn.style.background="#6d1010";}
+  rec.onresult=e=>{const heard=e.results?.[0]?.[0]?.transcript||"";document.getElementById("searchInput").value=heard;document.getElementById("searchHistoryPanel").style.display="none";if(heard.trim())searchMusic()};
+  rec.onerror=()=>alert("ভয়েস সার্চ কাজ করেনি। মাইক্রোফোন পারমিশন ও ইন্টারনেট পরীক্ষা করো।");
+  rec.onend=()=>{if(btn){btn.textContent="🎙";btn.style.background="";}};
+  try{rec.start()}catch(e){alert("ভয়েস সার্চ চালু করা যায়নি। আবার চেষ্টা করো।")}
+}
+document.addEventListener("click",e=>{if(!e.target.closest(".search-area")&&!e.target.closest("#searchHistoryPanel")){const p=document.getElementById("searchHistoryPanel");if(p)p.style.display="none";document.querySelector(".search-area")?.classList.remove("search-open")}});
+
+async function rotatePlayer(){
+  const root=document.getElementById("playerOverlay");
+  if(!root || !root.classList.contains("show")){
+    alert("আগে একটি ভিডিও চালাও।"); return;
+  }
+  const rotating=root.classList.toggle("rotate-landscape");
+  try{
+    if(rotating){
+      if(document.documentElement.requestFullscreen && !document.fullscreenElement){
+        try{await document.documentElement.requestFullscreen()}catch(_){}
+      }
+      if(screen.orientation && typeof screen.orientation.lock==="function"){
+        try{await screen.orientation.lock("landscape")}catch(_){}
+      }
+      // CSS fullscreen fallback keeps the rotate action useful in WebViews where native lock is unavailable.
+      document.body.classList.add("jawra-rotated");
+    }else{
+      try{if(screen.orientation && screen.orientation.unlock)screen.orientation.unlock()}catch(_){}
+      try{if(document.fullscreenElement && document.exitFullscreen)await document.exitFullscreen()}catch(_){}
+      document.body.classList.remove("jawra-rotated");
+    }
+  }catch(e){ /* CSS rotate/fullscreen layout remains the fallback. */ }
+}
+
+let miniPlaybackPaused=false;
+let demonWasDragged=false;
+function toggleMiniPlayback(){
+  if(!currentVideoId)return;
+  miniPlaybackPaused=!miniPlaybackPaused;
+  const frame=document.getElementById("ytFrame");
+  if(frame && frame.contentWindow){
+    try{
+      frame.contentWindow.postMessage(JSON.stringify({event:"command",func:miniPlaybackPaused?"pauseVideo":"playVideo",args:[]}),"*");
+    }catch(e){}
+  }
+  const btn=document.getElementById("playerDemonToggle");
+  if(btn){btn.textContent=miniPlaybackPaused?"👿":"😈";btn.setAttribute("aria-label",miniPlaybackPaused?"ভিডিও চালাও":"ভিডিও থামাও");}
+  const miniTitle=document.getElementById("miniTitle");
+  if(miniTitle && document.getElementById("miniPlayer")?.classList.contains("show")){
+    miniTitle.textContent=(miniPlaybackPaused?"⏸ ":"▶ ")+(currentTitle||"JAWRA MUSIC");
+  }
+}
+
+function initDraggableDemon(){
+  const btn=document.getElementById("playerDemonToggle");
+  if(!btn || btn.dataset.dragReady)return;
+  // Keep the floating control visible even when the player overlay is hidden.
+  document.body.appendChild(btn);
+  btn.dataset.dragReady="1";
+  let sx=0,sy=0,left=0,top=0,moved=false,pointerId=null;
+  btn.addEventListener("pointerdown",e=>{
+    pointerId=e.pointerId; moved=false; sx=e.clientX; sy=e.clientY;
+    const r=btn.getBoundingClientRect(); left=r.left; top=r.top;
+    try{btn.setPointerCapture(pointerId)}catch(_){}
+  });
+  btn.addEventListener("pointermove",e=>{
+    if(pointerId!==e.pointerId)return;
+    const dx=e.clientX-sx,dy=e.clientY-sy;
+    if(Math.abs(dx)>7||Math.abs(dy)>7)moved=true;
+    if(moved){
+      const x=Math.max(0,Math.min(window.innerWidth-btn.offsetWidth,left+dx));
+      const y=Math.max(0,Math.min(window.innerHeight-btn.offsetHeight,top+dy));
+      btn.style.left=x+"px";btn.style.top=y+"px";btn.style.right="auto";btn.style.bottom="auto";
+    }
+  });
+  btn.addEventListener("pointerup",e=>{
+    if(pointerId!==e.pointerId)return;
+    pointerId=null;
+    if(moved){demonWasDragged=true;setTimeout(()=>demonWasDragged=false,250);}
+  });
+  btn.addEventListener("click",e=>{if(demonWasDragged){e.preventDefault();e.stopImmediatePropagation();return;}toggleMiniPlayback()});
+}
+initDraggableDemon();
+
+function popupCurrentVideo(){
+  if(!currentVideoId)return;
+  startBackground();
+}
+function downloadCurrentVideo(){
+  if(!currentVideoId)return;
+  // YouTube embeds do not expose the raw media file to this HTML page.
+  // A real offline video download needs an authorized media URL or native supported download API.
+  const url="https://www.youtube.com/watch?v="+encodeURIComponent(currentVideoId);
+  alert("এই HTML/WebView থেকে YouTube ভিডিওর আসল ফাইল সরাসরি ডাউনলোড করে অফলাইনে রাখা যায় না—স্টোরেজ পারমিশন থাকলেও নয়। YouTube-এর অনুমোদিত Download/Offline সুবিধা ব্যবহার করো।");
+  try{window.open(url,"_blank","noopener");}catch(e){}
+}
+
+/* =================================================
+   SEARCH
+   ================================================= */
+
+function focusSearch(){
+
+    const input =
+        document.getElementById(
+            "searchInput"
+        );
+
+    input.focus();
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+function searchEnter(event){
+
+    if(event.key==="Enter"){
+        searchMusic();
+    }
+
+}
+
+
+/* =================================================
+   HOME
+   ================================================= */
+
+/* =================================================
+   YOUTUBE QUOTA BANNER + PACIFIC RESET COUNTDOWN
+   ================================================= */
+let quotaCountdownInterval = null;
+let quotaResetAt = 0;
+
+function pacificDateKey(date){
+    const parts = new Intl.DateTimeFormat("en-CA", {
+        timeZone:"America/Los_Angeles", year:"numeric", month:"2-digit", day:"2-digit"
+    }).formatToParts(date);
+    const get = type => parts.find(p => p.type === type)?.value || "";
+    return get("year")+"-"+get("month")+"-"+get("day");
+}
+function getNextPacificMidnight(){
+    const now = new Date();
+    const todayKey = pacificDateKey(now);
+    let probe = new Date(now.getTime());
+    probe.setSeconds(0,0);
+    for(let i=0;i<27*60;i++){
+        probe = new Date(probe.getTime()+60000);
+        if(pacificDateKey(probe)!==todayKey) return probe.getTime();
+    }
+    return now.getTime()+24*60*60*1000;
+}
+function updateQuotaCountdown(){
+    const el=document.getElementById("quotaCountdown");
+    if(!el) return;
+    const remaining=Math.max(0,quotaResetAt-Date.now());
+    const totalSeconds=Math.floor(remaining/1000);
+    const hours=Math.floor(totalSeconds/3600);
+    const minutes=Math.floor((totalSeconds%3600)/60);
+    const seconds=totalSeconds%60;
+    const totalMinutes=Math.ceil(remaining/60000);
+    el.textContent=String(hours).padStart(2,"0")+":"+
+        String(minutes).padStart(2,"0")+":"+
+        String(seconds).padStart(2,"0")+" · "+totalMinutes+" মিনিট";
+    if(remaining<=0){
+        clearInterval(quotaCountdownInterval);
+        quotaCountdownInterval=null;
+        el.textContent="রিসেট হয়েছে · আবার চেষ্টা করো";
+    }
+}
+function showQuotaBanner(){
+    const banner=document.getElementById("quotaBanner");
+    if(!banner) return;
+    quotaResetAt=getNextPacificMidnight();
+    banner.classList.add("show");
+    updateQuotaCountdown();
+    if(quotaCountdownInterval) clearInterval(quotaCountdownInterval);
+    quotaCountdownInterval=setInterval(updateQuotaCountdown,1000);
+}
+function hideQuotaBanner(){
+    document.getElementById("quotaBanner")?.classList.remove("show");
+}
+function isQuotaError(error){
+    const msg=String(error?.message || error || "").toLowerCase();
+    return msg.includes("quotaexceeded") || msg.includes("dailylimitexceeded") ||
+        msg.includes("quota exceeded") || msg.includes("exceeded your quota") ||
+        msg.includes("daily limit");
+}
+function handleApiFailure(error){
+    if(isQuotaError(error)) showQuotaBanner();
+}
+
+async function loadHomeVideos(){
+
+    currentMode="home";
+    nextPageToken="";
+    loadingMore=false;
+
+    const results =
+        document.getElementById(
+            "results"
+        );
+
+    results.innerHTML=`
+        <div class="loading">
+            <div class="loading-spinner"></div>
+            নতুন ভিডিও লোড হচ্ছে...
+        </div>
+    `;
+
+    try{
+
+        const topics=[
+            "Bangladesh trending videos Bangla",
+            "Bangladeshi viral videos",
+            "Bangla new song Bangladesh",
+            "Bangladesh funny videos Bangla",
+            "Bangla natok Bangladesh",
+            "Bangladeshi DJ song",
+            "Bangladesh Shorts Bangla"
+        ];
+
+        const topic =
+            topics[
+                Math.floor(
+                    Math.random()*topics.length
+                )
+            ];
+
+        const url =
+            "https://www.googleapis.com/youtube/v3/search"+
+            "?part=snippet"+
+            "&q="+
+            encodeURIComponent(
+                topic
+            )+
+            "&type=video"+
+            "&maxResults=20"+
+            "&regionCode=BD"+
+            "&relevanceLanguage=bn"+
+            "&videoEmbeddable=true"+
+            "&order=relevance"+
+            "&key="+
+            encodeURIComponent(API_KEY);
+
+        const response =
+            await fetch(url);
+
+        const data =
+            await response.json();
+
+        if(!response.ok){
+
+            throw new Error(
+                (data.error?.errors?.[0]?.reason ? data.error.errors[0].reason + ": " : "") +
+                (data.error?.message || "YouTube API Error")
+            );
+
+        }
+
+        nextPageToken = data.nextPageToken || "";
+        try {
+            const cache=JSON.parse(localStorage.getItem("jawraSearchCache")||"{}");
+            cache[topic.toLowerCase()]={time:Date.now(),items:data.items||[],nextPageToken:nextPageToken};
+            const keys=Object.keys(cache);
+            if(keys.length>20) keys.sort((a,b)=>cache[a].time-cache[b].time).slice(0,keys.length-20).forEach(k=>delete cache[k]);
+            localStorage.setItem("jawraSearchCache",JSON.stringify(cache));
+        } catch(e) {}
+        showResults(shuffleArray(data.items || []));
+
+    }catch(error){
+
+        handleApiFailure(error);
+
+        results.innerHTML=`
+            <div class="loading">
+                ❌ ভিডিও লোড করা যাচ্ছে না।
+                <br><br>
+                ${escapeHtml(error.message)}
+            </div>
+        `;
+
+    }
+
+}
+
+
+/* =================================================
+   SEARCH
+   ================================================= */
+
+async function searchMusic(){
+
+    const input =
+        document
+        .getElementById("searchInput")
+        .value
+        .trim();
+
+    if(!input){
+
+        loadHomeVideos();
+        return;
+
+    }
+
+    addSearchHistory(input);
+    document.getElementById("searchHistoryPanel").style.display="none";document.querySelector(".search-area")?.classList.remove("search-open");
+    // Reuse recent search results for 30 minutes to avoid spending API quota repeatedly.
+    try {
+        const cached=JSON.parse(localStorage.getItem("jawraSearchCache")||"{}");
+        const entry=cached[input.toLowerCase()];
+        if(entry && Date.now()-entry.time < 30*60*1000 && Array.isArray(entry.items)) {
+            currentMode="search"; nextPageToken=entry.nextPageToken||"";
+            showResults(entry.items); return;
+        }
+    } catch(e) {}
+    currentMode="search";
+    nextPageToken="";
+
+    const results =
+        document.getElementById(
+            "results"
+        );
+
+    results.innerHTML=`
+        <div class="loading">
+            <div class="loading-spinner"></div>
+            🔍 ভিডিও খোঁজা হচ্ছে...
+        </div>
+    `;
+
+    try{
+
+        const url =
+            "https://www.googleapis.com/youtube/v3/search"+
+            "?part=snippet"+
+            "&q="+
+            encodeURIComponent(input)+
+            "&type=video"+
+            "&maxResults=20"+
+            "&regionCode=BD"+
+            "&relevanceLanguage=bn"+
+            "&videoEmbeddable=true"+
+            "&key="+
+            encodeURIComponent(API_KEY);
+
+        const response =
+            await fetch(url);
+
+        const data =
+            await response.json();
+
+        if(!response.ok){
+
+            throw new Error(
+                (data.error?.errors?.[0]?.reason ? data.error.errors[0].reason + ": " : "") +
+                (data.error?.message || "YouTube API Error")
+            );
+
+        }
+
+        nextPageToken =
+            data.nextPageToken || "";
+
+        showResults(
+            shuffleArray(
+                data.items || []
+            )
+        );
+
+    }catch(error){
+
+        handleApiFailure(error);
+
+        results.innerHTML=`
+            <div class="loading">
+                ❌ Search কাজ করছে না।
+                <br><br>
+                ${escapeHtml(error.message)}
+            </div>
+        `;
+
+    }
+
+}
+
+
+/* =================================================
+   BANGLADESH SHORTS + INFINITE SCROLL
+   ================================================= */
+async function loadShortsVideos(append=false){
+    if(loadingMore && append) return;
+    if(append && !nextPageToken) return;
+    if(append) loadingMore=true;
+    else { currentMode="shorts"; nextPageToken=""; }
+    const results=document.getElementById("results");
+    let loader=null;
+    if(append){
+        loader=document.createElement("div"); loader.className="loading"; loader.id="shortsMoreLoader";
+        loader.innerHTML='<div class="loading-spinner"></div>আরও বাংলাদেশি Shorts আসছে...'; results.appendChild(loader);
+    }
+    try{
+        const query="Bangladesh Bangla Shorts";
+        let url="https://www.googleapis.com/youtube/v3/search?part=snippet"+
+          "&q="+encodeURIComponent(query)+"&type=video&videoDuration=short"+
+          "&maxResults=20&regionCode=BD&relevanceLanguage=bn&videoEmbeddable=true&order=relevance"+
+          (append && nextPageToken ? "&pageToken="+encodeURIComponent(nextPageToken) : "")+
+          "&key="+encodeURIComponent(API_KEY);
+        const response=await fetch(url); const data=await response.json();
+        if(!response.ok) throw new Error(data.error?.message||"YouTube API Error");
+        nextPageToken=data.nextPageToken||"";
+        const items=(data.items||[]).filter(item=>item.id?.videoId && item.snippet?.title);
+        if(append){loader?.remove(); appendResults(items);}
+        else {results.innerHTML=""; appendResults(items);}
+        if(!items.length && !append) results.innerHTML='<div class="loading">এখন বাংলাদেশি Shorts পাওয়া যায়নি। আবার চেষ্টা করো।</div>';
+    }catch(error){
+        if(loader) loader.innerText="আরও Shorts লোড হয়নি। ইন্টারনেট বা API quota পরীক্ষা করো।";
+        else results.innerHTML='<div class="loading">বাংলাদেশি Shorts লোড হয়নি। ইন্টারনেট বা API quota পরীক্ষা করো।</div>';
+    }finally{loadingMore=false;}
+}
+
+/* =================================================
+   SHOW RESULTS
+   ================================================= */
+
+function showResults(items){
+
+    const results =
+        document.getElementById(
+            "results"
+        );
+
+    results.innerHTML="";
+
+    appendResults(items);
+
+}
+
+
+/* =================================================
+   VIDEO CARDS
+   ================================================= */
+
+function appendResults(items){
+
+    const results =
+        document.getElementById(
+            "results"
+        );
+
+    items.forEach(item=>{
+
+        const videoId =
+            item.id?.videoId ||
+            (typeof item.id==="string"
+                ? item.id
+                : "");
+
+        if(!videoId){
+            return;
+        }
+
+        const title =
+            decodeHtml(
+                item.snippet?.title || ""
+            );
+
+        const channel =
+            decodeHtml(
+                item.snippet?.channelTitle || ""
+            );
+
+        const thumb =
+            item.snippet?.thumbnails?.high?.url ||
+            item.snippet?.thumbnails?.medium?.url ||
+            "";
+
+        const card =
+            document.createElement("div");
+
+        card.className="video";
+
+        card.onclick=()=>{
+
+            playVideo(
+                videoId,
+                title,
+                channel,
+                thumb,
+                item.snippet?.channelId || ""
+            );
+
+        };
+
+        card.innerHTML=`
+
+            <div class="thumbnail-wrap">
+
+                <img
+                    class="thumbnail"
+                    src="${escapeHtml(thumb)}"
+                    loading="lazy"
+                    alt="">
+
+            </div>
+
+            <div class="video-info">
+
+                <div class="channel-logo">
+                    🎧
+                </div>
+
+                <div class="details">
+
+                    <div class="title-row">
+
+                        <div class="title">
+                            ${escapeHtml(title)}
+                        </div>
+
+                        <div class="more">
+                            ⋮
+                        </div>
+
+                    </div>
+
+                    <div class="meta">
+                        ${escapeHtml(channel)}
+                        • YouTube
+                    </div>
+
+                </div>
+
+            </div>
+
+        `;
+
+        results.appendChild(card);
+
+    });
+
+}
+
+
+/* =================================================
+   INFINITE SCROLL
+   ================================================= */
+
+window.addEventListener(
+    "scroll",
+    ()=>{
+
+        if(
+            window.innerHeight+
+            window.scrollY >=
+            document.body.offsetHeight-850
+        ){
+
+            if(currentMode==="shorts") loadShortsVideos(true);
+            else loadMoreVideos();
+
+        }
+
+    }
+);
+
+
+async function loadMoreVideos(){
+
+    if(
+        loadingMore ||
+        !nextPageToken
+    ){
+        return;
+    }
+
+    loadingMore=true;
+
+    const results =
+        document.getElementById(
+            "results"
+        );
+
+    const loader =
+        document.createElement("div");
+
+    loader.className="loading";
+    loader.id="moreLoader";
+
+    loader.innerHTML=`
+        <div class="loading-spinner"></div>
+        আরও ভিডিও আসছে...
+    `;
+
+    results.appendChild(loader);
+
+    try{
+
+        let query="";
+
+        if(currentMode==="shorts"){
+            query="Bangladesh Bangla Shorts";
+        }else if(currentMode==="search"){
+
+            query =
+                document
+                .getElementById(
+                    "searchInput"
+                )
+                .value
+                .trim();
+
+        }else{
+
+            const topics=[
+                "Bangladesh trending videos Bangla",
+                "Bangladeshi viral videos",
+                "Bangla new song Bangladesh",
+                "Bangladesh funny videos Bangla",
+                "Bangla natok Bangladesh",
+                "Bangladeshi DJ song",
+                "Bangladesh Shorts Bangla"
+            ];
+
+            query =
+                topics[
+                    Math.floor(
+                        Math.random()*topics.length
+                    )
+                ];
+
+        }
+
+        const url =
+            "https://www.googleapis.com/youtube/v3/search"+
+            "?part=snippet"+
+            (window.currentPlayingChannelId ? "&channelId="+encodeURIComponent(window.currentPlayingChannelId) : "&q="+encodeURIComponent(query))+
+            "&type=video"+
+            "&maxResults=20"+
+            "&regionCode=BD"+
+            "&relevanceLanguage=bn"+
+            "&videoEmbeddable=true"+
+            "&pageToken="+
+            encodeURIComponent(nextPageToken)+
+            "&key="+
+            encodeURIComponent(API_KEY);
+
+        const response =
+            await fetch(url);
+
+        const data =
+            await response.json();
+
+        if(!response.ok){
+            throw new Error(
+                (data.error?.errors?.[0]?.reason ? data.error.errors[0].reason + ": " : "") +
+                (data.error?.message || "YouTube API Error")
+            );
+        }
+
+        nextPageToken =
+            data.nextPageToken || "";
+
+        loader.remove();
+
+        appendResults(
+            shuffleArray(
+                data.items || []
+            )
+        );
+
+    }catch(error){
+
+        handleApiFailure(error);
+
+        loader.innerText =
+            "আরও ভিডিও লোড করা যায়নি।";
+
+    }
+
+    loadingMore=false;
+
+}
+
+
+/* =================================================
+   PLAY VIDEO
+   ================================================= */
+
+function playVideo(
+    videoId,
+    title,
+    channel,
+    thumb,
+    channelId=""
+){
+
+    if(channelId) window.currentPlayingChannelId=channelId;
+    if(document.getElementById("miniPlayer")?.classList.contains("show")) closeBackground();
+    currentVideoId=videoId;
+    currentTitle=title;
+    currentChannel=channel;
+    currentThumb=thumb;
+
+    document
+        .getElementById("miniPlayer")
+        .classList
+        .remove("show");
+
+    const overlay =
+        document.getElementById(
+            "playerOverlay"
+        );
+
+    const frame =
+        document.getElementById(
+            "ytFrame"
+        );
+
+    let embed =
+        "https://www.youtube-nocookie.com/embed/"+
+        encodeURIComponent(videoId)+
+        "?autoplay=1"+
+        "&enablejsapi=1"+
+        "&playsinline=1"+
+        "&controls=1"+
+        "&rel=0"+
+        "&modestbranding=1"+
+        "&enablejsapi=1"+
+        "&origin="+encodeURIComponent(window.location.origin);
+
+    const origin =
+        window.location.origin;
+
+    if(
+        origin &&
+        origin!=="null" &&
+        (
+            origin.startsWith("http://") ||
+            origin.startsWith("https://")
+        )
+    ){
+
+        embed +=
+            "&enablejsapi=1"+
+            "&origin="+
+            encodeURIComponent(origin);
+
+    }
+
+    frame.src=embed;
+
+    overlay.classList.add("show");
+
+    document.body.style.overflow="hidden";
+
+    history.pushState(
+        {jawraPlayer:true},
+        "",
+        "#player"
+    );
+
+    playerHistory=true;
+
+    document.getElementById(
+        "viewCount"
+    ).innerText="👁 ...";
+
+    document.getElementById(
+        "likeCount"
+    ).innerText="👍 ...";
+
+    document.getElementById(
+        "commentCount"
+    ).innerText="💬 ...";
+
+    document
+        .getElementById("actionMenu")
+        .classList
+        .remove("show");
+
+    loadVideoStats(videoId);
+
+    relatedPageToken="";
+
+    const related =
+        document.getElementById(
+            "relatedResults"
+        );
+
+    related.innerHTML=`
+        <div class="related-loading">
+            <div class="related-spinner"></div>
+            একই ধরনের ভিডিও খোঁজা হচ্ছে...
+        </div>
+    `;
+
+    loadRelatedVideos(title);
+
+}
+
+
+/* =================================================
+   VIDEO STATS
+   ================================================= */
+
+async function loadVideoStats(videoId){
+
+    try{
+
+        const url =
+            "https://www.googleapis.com/youtube/v3/videos"+
+            "?part=statistics"+
+            "&id="+
+            encodeURIComponent(videoId)+
+            "&key="+
+            encodeURIComponent(API_KEY);
+
+        const response =
+            await fetch(url);
+
+        const data =
+            await response.json();
+
+        if(!response.ok){
+            handleApiFailure(new Error(
+                (data.error?.errors?.[0]?.reason ? data.error.errors[0].reason + ": " : "") +
+                (data.error?.message || "")
+            ));
+            return;
+        }
+
+        const stats =
+            data.items?.[0]?.statistics;
+
+        if(!stats){
+            return;
+        }
+
+        document.getElementById(
+            "viewCount"
+        ).innerText =
+            "👁 "+formatNumber(
+                stats.viewCount
+            );
+
+        document.getElementById(
+            "likeCount"
+        ).innerText =
+            "👍 "+formatNumber(
+                stats.likeCount
+            );
+
+        document.getElementById(
+            "commentCount"
+        ).innerText =
+            "💬 "+formatNumber(
+                stats.commentCount
+            );
+
+    }catch(e){
+
+        handleApiFailure(e);
+        document.getElementById(
+            "viewCount"
+        ).innerText="👁 —";
+
+        document.getElementById(
+            "likeCount"
+        ).innerText="👍 —";
+
+        document.getElementById(
+            "commentCount"
+        ).innerText="💬 —";
+
+    }
+
+}
+
+
+function formatNumber(value){
+
+    if(value===undefined){
+        return "—";
+    }
+
+    const n =
+        Number(value);
+
+    if(n>=10000000){
+        return (
+            (n/10000000)
+            .toFixed(1)
+            .replace(".0","")
+            +"Cr"
+        );
+    }
+
+    if(n>=100000){
+        return (
+            (n/100000)
+            .toFixed(1)
+            .replace(".0","")
+            +"L"
+        );
+    }
+
+    if(n>=1000){
+        return (
+            (n/1000)
+            .toFixed(1)
+            .replace(".0","")
+            +"K"
+        );
+    }
+
+    return n.toLocaleString();
+
+}
+
+
+/* =================================================
+   RELATED
+   ================================================= */
+
+async function loadRelatedVideos(title){
+
+    loadingRelated=true;
+
+    try{
+
+        const query =
+            makeRelatedQuery(title);
+
+        const url =
+            "https://www.googleapis.com/youtube/v3/search"+
+            "?part=snippet"+
+            (window.currentPlayingChannelId ? "&channelId="+encodeURIComponent(window.currentPlayingChannelId) : "&q="+encodeURIComponent(query))+
+            "&type=video"+
+            "&maxResults=20"+
+            "&regionCode=BD"+
+            "&relevanceLanguage=bn"+
+            "&videoEmbeddable=true"+
+            "&order=relevance"+
+            "&key="+
+            encodeURIComponent(API_KEY);
+
+        const response =
+            await fetch(url);
+
+        const data =
+            await response.json();
+
+        if(!response.ok){
+            throw new Error(
+                (data.error?.errors?.[0]?.reason ? data.error.errors[0].reason + ": " : "") +
+                (data.error?.message || "YouTube API Error")
+            );
+        }
+
+        relatedPageToken =
+            data.nextPageToken || "";
+
+        const related =
+            document.getElementById(
+                "relatedResults"
+            );
+
+        related.innerHTML="";
+
+        const filtered =
+            (data.items || [])
+            .filter(item=>{
+
+                const id =
+                    item.id?.videoId;
+
+                return id &&
+                    id!==currentVideoId;
+
+            });
+
+        appendRelatedResults(filtered);
+
+    }catch(error){
+
+        handleApiFailure(error);
+
+        document.getElementById(
+            "relatedResults"
+        ).innerHTML=`
+            <div class="related-loading">
+                একই ধরনের ভিডিও পাওয়া যাচ্ছে না।
+            </div>
+        `;
+
+    }
+
+    loadingRelated=false;
+
+}
+
+
+function makeRelatedQuery(title){
+
+    let clean =
+        decodeHtml(title)
+        .replace(
+            /[^\u0980-\u09FFa-zA-Z0-9\s]/g,
+            " "
+        )
+        .replace(/\s+/g," ")
+        .trim();
+
+    return clean
+        .split(" ")
+        .filter(Boolean)
+        .slice(0,7)
+        .join(" ");
+
+}
+
+
+function appendRelatedResults(items){
+
+    const container =
+        document.getElementById(
+            "relatedResults"
+        );
+
+    items.forEach(item=>{
+
+        const videoId =
+            item.id?.videoId;
+
+        if(
+            !videoId ||
+            videoId===currentVideoId
+        ){
+            return;
+        }
+
+        const title =
+            decodeHtml(
+                item.snippet?.title || ""
+            );
+
+        const channel =
+            decodeHtml(
+                item.snippet?.channelTitle || ""
+            );
+
+        const thumb =
+            item.snippet?.thumbnails?.high?.url ||
+            item.snippet?.thumbnails?.medium?.url ||
+            "";
+
+        const card =
+            document.createElement("div");
+
+        card.className="related-video";
+
+        card.onclick=()=>{
+
+            playVideo(
+                videoId,
+                title,
+                channel,
+                thumb,
+                item.snippet?.channelId || ""
+            );
+
+        };
+
+        card.innerHTML=`
+
+            <div class="thumbnail-wrap">
+
+                <img
+                    class="thumbnail"
+                    src="${escapeHtml(thumb)}"
+                    loading="lazy"
+                    alt="">
+
+            </div>
+
+            <div class="video-info">
+
+                <div class="channel-logo">
+                    🎧
+                </div>
+
+                <div class="details">
+
+                    <div class="title-row">
+
+                        <div class="title">
+                            ${escapeHtml(title)}
+                        </div>
+
+                    </div>
+
+                    <div class="meta">
+                        ${escapeHtml(channel)}
+                    </div>
+
+                </div>
+
+            </div>
+
+        `;
+
+        container.appendChild(card);
+
+    });
+
+}
+
+
+/* =================================================
+   RELATED INFINITE SCROLL
+   ================================================= */
+
+document
+.getElementById("playerOverlay")
+.addEventListener(
+    "scroll",
+    ()=>{
+
+        const box =
+            document.getElementById(
+                "playerOverlay"
+            );
+
+        if(
+            box.scrollTop+
+            box.clientHeight >=
+            box.scrollHeight-700
+        ){
+
+            loadMoreRelated();
+
+        }
+
+    }
+);
+
+
+async function loadMoreRelated(){
+
+    if(
+        loadingRelated ||
+        !currentTitle
+    ){
+        return;
+    }
+
+    loadingRelated=true;
+
+    try{
+
+        const query = makeRelatedQuery(currentTitle);
+        const channelId = window.currentPlayingChannelId || "";
+        const url =
+            "https://www.googleapis.com/youtube/v3/search"+
+            "?part=snippet"+
+            "&q="+
+            encodeURIComponent(query)+
+            "&type=video"+
+            "&maxResults=20"+
+            "&regionCode=BD"+
+            "&relevanceLanguage=bn"+
+            "&videoEmbeddable=true"+
+            (relatedPageToken ? "&pageToken="+encodeURIComponent(relatedPageToken) : "&order=date")+
+            "&key="+
+            encodeURIComponent(API_KEY);
+
+        const response =
+            await fetch(url);
+
+        const data =
+            await response.json();
+
+        if(!response.ok){
+            throw new Error(
+                (data.error?.errors?.[0]?.reason ? data.error.errors[0].reason + ": " : "") +
+                (data.error?.message || "YouTube API Error")
+            );
+        }
+
+        relatedPageToken = data.nextPageToken || "";
+        if(!relatedPageToken){ relatedPageToken=""; }
+
+        appendRelatedResults(
+            data.items || []
+        );
+
+    }catch(e){ handleApiFailure(e); }
+
+    loadingRelated=false;
+
+}
+
+
+/* =================================================
+   😈 BACKGROUND MODE
+   ================================================= */
+
+let miniOriginalParent = null;
+let miniOriginalNextSibling = null;
+function startBackground(){
+    if(!currentVideoId) return;
+    const frame=document.getElementById("ytFrame");
+    const host=document.getElementById("miniFrameHost");
+    if(!frame || !host) return;
+    if(!miniOriginalParent){
+        miniOriginalParent=frame.parentNode;
+        miniOriginalNextSibling=frame.nextSibling;
+    }
+    document.getElementById("miniTitle").innerText=currentTitle || "JAWRA MUSIC";
+    host.appendChild(frame); // Move the existing iframe instead of reloading a second video.
+    frame.style.width="100%";
+    frame.style.height="100%";
+    frame.style.aspectRatio="16 / 9";
+    frame.style.border="0";
+    document.getElementById("miniPlayer").classList.add("show");
+    const toggle=document.getElementById("playerDemonToggle"); if(toggle)toggle.textContent=miniPlaybackPaused?"👿":"😈";
+    document.getElementById("playerOverlay").classList.remove("show");
+    document.body.style.overflow="";
+}
+// Drag the mini video by its title bar; keep it within the visible screen and remember its position.
+function initDraggableMiniPlayer(){
+  const panel=document.getElementById("miniPlayer");
+  const handle=panel?.querySelector(".mini-top");
+  if(!panel||!handle||panel.dataset.dragReady)return;
+  panel.dataset.dragReady="1";
+  try{
+    const saved=JSON.parse(localStorage.getItem("jawraMiniPlayerPosition")||"null");
+    if(saved && Number.isFinite(saved.left) && Number.isFinite(saved.top)){
+      panel.style.left=Math.max(0,Math.min(innerWidth-panel.offsetWidth,saved.left))+"px";
+      panel.style.top=Math.max(0,Math.min(innerHeight-panel.offsetHeight,saved.top))+"px";
+      panel.style.right="auto";panel.style.bottom="auto";
+    }
+  }catch(e){}
+  let pointer=null,startX=0,startY=0,originX=0,originY=0,moved=false;
+  handle.addEventListener("pointerdown",e=>{
+    if(e.target.closest("button"))return;
+    pointer=e.pointerId;moved=false;startX=e.clientX;startY=e.clientY;
+    const r=panel.getBoundingClientRect();originX=r.left;originY=r.top;
+    try{handle.setPointerCapture(pointer)}catch(err){}
+    e.preventDefault();
+  });
+  handle.addEventListener("pointermove",e=>{
+    if(pointer!==e.pointerId)return;
+    const dx=e.clientX-startX,dy=e.clientY-startY;
+    if(Math.abs(dx)>3||Math.abs(dy)>3)moved=true;
+    if(!moved)return;
+    const x=Math.max(0,Math.min(innerWidth-panel.offsetWidth,originX+dx));
+    const y=Math.max(0,Math.min(innerHeight-panel.offsetHeight,originY+dy));
+    panel.style.left=x+"px";panel.style.top=y+"px";panel.style.right="auto";panel.style.bottom="auto";
+  });
+  const finish=e=>{
+    if(pointer!==e.pointerId)return;pointer=null;
+    if(moved){try{localStorage.setItem("jawraMiniPlayerPosition",JSON.stringify({left:panel.getBoundingClientRect().left,top:panel.getBoundingClientRect().top}))}catch(err){}}
+  };
+  handle.addEventListener("pointerup",finish);handle.addEventListener("pointercancel",finish);
+  window.addEventListener("resize",()=>{
+    if(!panel.classList.contains("show"))return;
+    const r=panel.getBoundingClientRect();
+    panel.style.left=Math.max(0,Math.min(innerWidth-panel.offsetWidth,r.left))+"px";
+    panel.style.top=Math.max(0,Math.min(innerHeight-panel.offsetHeight,r.top))+"px";
+    panel.style.right="auto";panel.style.bottom="auto";
+  });
+}
+initDraggableMiniPlayer();
+
+function closeBackground(){
+    const frame=document.getElementById("ytFrame");
+    if(frame && miniOriginalParent){
+        if(miniOriginalNextSibling && miniOriginalNextSibling.parentNode===miniOriginalParent){
+            miniOriginalParent.insertBefore(frame,miniOriginalNextSibling);
+        }else{
+            miniOriginalParent.appendChild(frame);
+        }
+        frame.style.width=""; frame.style.height=""; frame.style.aspectRatio=""; frame.style.border="";
+    }
+    document.getElementById("miniPlayer").classList.remove("show");
+    miniOriginalParent=null; miniOriginalNextSibling=null;
+    if(currentVideoId){document.getElementById("playerOverlay").classList.add("show");}
+    miniPlaybackPaused=false;
+    const toggle=document.getElementById("playerDemonToggle"); if(toggle)toggle.textContent="😈";
+}
+
+
+/* =================================================
+   PLAYER CLOSE
+   ================================================= */
+
+function closePlayer(
+    changeHistory=true
+){
+
+    document.getElementById(
+        "ytFrame"
+    ).src="";
+
+    document
+        .getElementById(
+            "playerOverlay"
+        )
+        .classList
+        .remove("show");
+
+    document.body.style.overflow="";
+
+    if(
+        changeHistory &&
+        playerHistory
+    ){
+
+        playerHistory=false;
+
+        history.back();
+
+    }
+
+}
+
+
+/* =================================================
+   PHONE BACK
+   ================================================= */
+
+window.addEventListener(
+    "popstate",
+    ()=>{
+
+        if(
+            document
+            .getElementById(
+                "playerOverlay"
+            )
+            .classList
+            .contains("show")
+        ){
+
+            closePlayer(false);
+
+        }
+
+        document
+            .getElementById(
+                "actionMenu"
+            )
+            .classList
+            .remove("show");
+
+    }
+);
+
+
+/* =================================================
+   THREE DOT MENU
+   ================================================= */
+
+function toggleActionMenu(event){
+
+    event.stopPropagation();
+
+    document
+        .getElementById(
+            "actionMenu"
+        )
+        .classList
+        .toggle("show");
+
+}
+
+
+document.addEventListener(
+    "click",
+    ()=>{
+
+        document
+            .getElementById(
+                "actionMenu"
+            )
+            .classList
+            .remove("show");
+
+    }
+);
+
+
+/* =================================================
+   SAVE
+   ================================================= */
+
+
+function viewSavedVideos(){
+  const panel=document.getElementById("searchHistoryPanel"); if(panel)panel.style.display="none";
+  const results=document.getElementById("results"); if(!results)return;
+  let saved=[];try{saved=JSON.parse(localStorage.getItem("jawraSavedVideos")||"[]")}catch(e){}
+  results.innerHTML=`<h2 style="padding:18px 14px;color:#d8b45a;background:#111">⬇ Saved videos</h2>`;
+  if(!saved.length){results.innerHTML+=`<div style="padding:28px 18px;text-align:center;color:#888">এখনো কোনো ভিডিও Save করা হয়নি। ভিডিওর নিচে Save চাপো।</div>`;return;}
+  saved.slice().reverse().forEach(v=>{const card=document.createElement("div");card.className="video";card.innerHTML=`<div class="thumbnail-wrap"><img class="thumbnail" loading="lazy" src="${escapeHtml(v.thumb||"")}" alt=""></div><div class="video-info"><div class="title">${escapeHtml(v.title||"Saved video")}</div><div class="meta">${escapeHtml(v.channel||"")}</div><button class="player-extra-actions" style="width:100%;color:#f5d784">▶ Play</button></div>`;card.onclick=()=>playVideo(v.id,v.title,v.channel,v.thumb);results.appendChild(card)});
+}
+
+function saveCurrentVideo(){
+
+    if(!currentVideoId){
+        return;
+    }
+
+    let saved =
+        JSON.parse(
+            localStorage.getItem(
+                "jawraSavedVideos"
+            ) || "[]"
+        );
+
+    if(
+        saved.some(
+            v=>v.id===currentVideoId
+        )
+    ){
+
+        alert("ভিডিওটি আগে থেকেই Saved আছে।");
+        return;
+
+    }
+
+    saved.push({
+
+        id:currentVideoId,
+        title:currentTitle,
+        channel:currentChannel,
+        thumb:currentThumb
+
+    });
+
+    localStorage.setItem(
+        "jawraSavedVideos",
+        JSON.stringify(saved)
+    );
+
+    alert("ভিডিওটি Saved হয়েছে।");
+
+}
+
+
+/* =================================================
+   CATEGORY
+   ================================================= */
+
+function categorySearch(category){
+
+    if((category||"").toLowerCase()==="shorts"){
+        currentMode="shorts";
+        nextPageToken="";
+        loadingMore=false;
+        document.querySelectorAll(".category").forEach(item=>item.classList.remove("active"));
+        const results=document.getElementById("results");
+        results.innerHTML='<div class="loading"><div class="loading-spinner"></div>বাংলাদেশের Shorts ভিডিও লোড হচ্ছে...</div>';
+        loadShortsVideos();
+        window.scrollTo({top:0,behavior:"smooth"});
+        return;
+    }
+
+    document
+        .querySelectorAll(".category")
+        .forEach(
+            item=>
+                item.classList.remove("active")
+        );
+
+    document
+        .querySelectorAll(".category")
+        .forEach(item=>{
+
+            if(
+                item.innerText
+                .toLowerCase()
+                ===
+                (category || "All")
+                .toLowerCase()
+            ){
+
+                item.classList.add("active");
+
+            }
+
+        });
+
+    if(!category){
+
+        document.getElementById(
+            "searchInput"
+        ).value="";
+
+        loadHomeVideos();
+
+        return;
+
+    }
+
+    document.getElementById(
+        "searchInput"
+    ).value=category;
+
+    searchMusic();
+
+}
+
+
+/* =================================================
+   HOME
+   ================================================= */
+
+function goHome(){
+
+    closePlayer(false);
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+    loadHomeVideos();
+
+}
+
+
+/* =================================================
+   BACKGROUND MENU
+   ================================================= */
+
+function toggleBgMenu(){
+
+    document
+        .getElementById(
+            "bgMenu"
+        )
+        .classList
+        .toggle("show");
+
+}
+
+
+function changeBackground(color){
+
+    document.body.style.background=color;
+
+    document.getElementById(
+        "results"
+    ).style.background=color;
+
+    document
+        .getElementById(
+            "bgMenu"
+        )
+        .classList
+        .remove("show");
+
+}
+
+
+/* =================================================
+   OTHER NAV
+   ================================================= */
+
+function showSubscriptions(){
+
+    alert(
+        "Subscriptions system পরে Firebase/Gmail login-এর সাথে যুক্ত করা যাবে।"
+    );
+
+}
+
+
+function showProfile(){
+
+    alert(
+        "JAWRA MUSIC Profile"
+    );
+
+}
+
+
+/* =================================================
+   UTILITIES
+   ================================================= */
+
+function shuffleArray(array){
+
+    const arr=[...array];
+
+    for(
+        let i=arr.length-1;
+        i>0;
+        i--
+    ){
+
+        const j =
+            Math.floor(
+                Math.random()*(i+1)
+            );
+
+        [
+            arr[i],
+            arr[j]
+        ]=[
+            arr[j],
+            arr[i]
+        ];
+
+    }
+
+    return arr;
+
+}
+
+
+function escapeHtml(text){
+
+    const div =
+        document.createElement("div");
+
+    div.textContent =
+        text || "";
+
+    return div.innerHTML;
+
+}
+
+
+function decodeHtml(text){
+
+    const div =
+        document.createElement("div");
+
+    div.innerHTML =
+        text || "";
+
+    return div.textContent;
+
+}
+
+
+/* =================================================
+   CLOSE MENU OUTSIDE
+   ================================================= */
+
+document.addEventListener(
+    "click",
+    event=>{
+
+        const menu =
+            document.getElementById(
+                "bgMenu"
+            );
+
+        const button =
+            document.querySelector(
+                ".menu-button"
+            );
+
+        if(
+            menu.classList.contains("show") &&
+            !menu.contains(event.target) &&
+            !button.contains(event.target)
+        ){
+
+            menu.classList.remove("show");
+
+        }
+
+    }
+);
+
+
+/* =================================================
+   START
+   ================================================= */
+
+initDraggableDemon();
+loadHomeVideos();
+
+</script>
+
+</body>
+</html>
